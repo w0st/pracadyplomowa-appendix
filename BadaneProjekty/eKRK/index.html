@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<base href="/">
+	<title>app</title>
+	<meta name="description" content="The front-end application for eKRK system" />
+	<meta name="author" content="" />
+	<meta name="keywords" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes" />
+	<link rel="shortcut icon" href="app/assets/images/favicon.ico" />
+	<link rel="apple-touch-icon" href="app/assets/images/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="app/assets/images/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="app/assets/images/apple-touch-icon-114x114.png" />
+	<!-- injector:css -->
+	<link rel="stylesheet" href="/src/bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="/src/bower_components/angular-loading-bar/build/loading-bar.css">
+	<link rel="stylesheet" href="/src/bower_components/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="/src/bower_components/metisMenu/dist/metisMenu.css">
+	<link rel="stylesheet" href="/src/bower_components/datatables/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="/src/bower_components/DataTables/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="/src/bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css">
+	<link rel="stylesheet" href="/app/assets/css/main.css">
+	<link rel="stylesheet" href="/app/assets/css/sb-admin-2.css">
+	<link rel="stylesheet" href="/app/assets/css/timeline.css">
+	<!-- endinjector -->
+</head>
+<body>
+
+<!--Beginning-->
+<div ng-app="app">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <header></header>
+        <!-- /.navbar-top-links -->
+
+        <!-- /.navbar-static-side -->
+        <div id="page-wrapper" style="min-height: 561px;">
+            <div ui-view></div>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+</div>
+
+<!--End-->
+
+<!-- injector:js -->
+<script src="/src/bower_components/jquery/dist/jquery.js"></script>
+<script src="/src/bower_components/es5-shim/es5-shim.js"></script>
+<script src="/src/bower_components/json3/lib/json3.min.js"></script>
+<script src="/src/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/src/bower_components/angular/angular.js"></script>
+<script src="/src/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/src/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/src/bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="/src/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="/src/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/src/bower_components/angular-touch/angular-touch.js"></script>
+<script src="/src/bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="/src/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/src/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/src/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="/src/bower_components/angular-translate/angular-translate.js"></script>
+<script src="/src/bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="/src/bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+<script src="/src/bower_components/ngstorage/ngStorage.js"></script>
+<script src="/src/bower_components/lodash/lodash.js"></script>
+<script src="/src/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="/src/bower_components/metisMenu/dist/metisMenu.js"></script>
+<script src="/src/bower_components/selection-model/dist/selection-model.js"></script>
+<script src="/src/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="/src/bower_components/DataTables/media/js/jquery.dataTables.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/angular-datatables.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+<script src="/src/bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
+<script src="/app/app.js"></script>
+<script src="/app/modules/authorisation/authorisationModule.js"></script>
+<script src="/app/modules/home/homeModule.js"></script>
+<script src="/app/modules/macierzsladowania/macierzsladowaniaModule.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/modul-ksztalceniaModule.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/moduly-ksztalceniaModule.js"></script>
+<script src="/app/modules/pracownicy-naukowi/pracownicy-naukowiModule.js"></script>
+<script src="/app/modules/profile-modulow/profile-modulowModule.js"></script>
+<script src="/app/modules/program-ksztalcenia/program-ksztalceniaModule.js"></script>
+<script src="/app/modules/program-studiow/program-studiowModule.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmioty-ksztalceniaModule.js"></script>
+<script src="/app/modules/zajecia/zajeciaModule.js"></script>
+<script src="/app/modules/authorisation/authorisationRoute.js"></script>
+<script src="/app/modules/home/homeRoute.js"></script>
+<script src="/app/modules/macierzsladowania/macierzsladowaniaRoute.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/modul-ksztalceniaRoute.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/moduly-ksztalceniaRoute.js"></script>
+<script src="/app/modules/profile-modulow/profile-modulowRoute.js"></script>
+<script src="/app/modules/program-ksztalcenia/program-ksztalceniaRoute.js"></script>
+<script src="/app/modules/program-studiow/program-studiowRoute.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmioty-ksztalceniaRoute.js"></script>
+<script src="/app/modules/zajecia/zajeciaRoute.js"></script>
+<script src="/app/modules/authorisation/authorisationCtrl.js"></script>
+<script src="/app/modules/home/homeCtrl.js"></script>
+<script src="/app/modules/macierzsladowania/macierzsladowaniaCtrl.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/modul-ksztalceniaCtrl.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/moduly-ksztalceniaCtrl.js"></script>
+<script src="/app/modules/profile-modulow/profile-modulowCtrl.js"></script>
+<script src="/app/modules/program-ksztalcenia/program-ksztalceniaCtrl.js"></script>
+<script src="/app/modules/program-studiow/program-studiowCtrl.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmiot-ksztalcenia-szczegolyCtrl.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmiot-ksztalceniaCtrl.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmioty-ksztalceniaCtrl.js"></script>
+<script src="/app/modules/shared/directives/change-language/change-languageCtrl.js"></script>
+<script src="/app/modules/shared/directives/logout/logoutCtrl.js"></script>
+<script src="/app/modules/zajecia/grupa-kursowCtrl.js"></script>
+<script src="/app/modules/zajecia/kursCtrl.js"></script>
+<script src="/app/modules/zajecia/zajeciaCtrl.js"></script>
+<script src="/app/modules/authorisation/authorisationService.js"></script>
+<script src="/app/modules/authorisation/token-interceptorService.js"></script>
+<script src="/app/modules/home/homeService.js"></script>
+<script src="/app/modules/macierzsladowania/macierzsladowaniaService.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/modul-ksztalceniaService.js"></script>
+<script src="/app/modules/moduly-ksztalcenia/moduly-ksztalceniaService.js"></script>
+<script src="/app/modules/pracownicy-naukowi/pracownicy-naukowiService.js"></script>
+<script src="/app/modules/profile-modulow/profile-modulowService.js"></script>
+<script src="/app/modules/program-ksztalcenia/program-ksztalceniaService.js"></script>
+<script src="/app/modules/program-studiow/program-studiowService.js"></script>
+<script src="/app/modules/przedmioty-ksztalcenia/przedmioty-ksztalceniaService.js"></script>
+<script src="/app/modules/shared/directives/logout/logoutService.js"></script>
+<script src="/app/modules/zajecia/zajeciaService.js"></script>
+<script src="/app/modules/shared/directives/change-language/change-languageDirective.js"></script>
+<script src="/app/modules/shared/directives/header-notification/header-notificationDirective.js"></script>
+<script src="/app/modules/shared/directives/header/headerDirective.js"></script>
+<script src="/app/modules/shared/directives/logout/logoutDirective.js"></script>
+<script src="/app/modules/shared/directives/sidebar/sidebarDirective.js"></script>
+<script src="/app/config/dev.js"></script>
+<!-- endinjector -->
+
+</body>
+</html>

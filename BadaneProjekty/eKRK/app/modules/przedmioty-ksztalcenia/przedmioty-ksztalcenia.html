@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{'przedmioty_ksztalcenia_title' | translate}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 alert alert-danger" ng-show="vm.error">
+        {{vm.error |translate}}
+    </div>
+    <div class="col-lg-12" ng-show="!vm.error">
+        <p><a class="btn btn-default" ui-sref="przedmiot-ksztalcenia">{{'przedmioty_ksztalcenia_btn_add' | translate}}</a></p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'przedmioty_ksztalcenia_title' | translate}}
+            </div>
+            <!-- /.panel-heading -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{'przedmioty_ksztalcenia_name' | translate}}</th>
+                        <th>{{'przedmioty_ksztalcenia_course_code' | translate}}</th>
+                        <th>{{'przedmioty_ksztalcenia_attendant' | translate}}</th>
+                        <th>{{'global_btn_details' | translate}}</th>
+                        <th>{{'global_btn_edit' | translate}}</th>
+                        <th>{{'global_btn_delete' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="przedmiot in vm.przedmiotyKsztalcenia">
+                        <td>{{przedmiot.nazwaPrzedmiotu}}</td>
+                        <td>{{przedmiot.kodyZajec}}</td>
+                        <td>{{przedmiot.opiekunPrzedmiotu.email}}</td>
+                        <td><a class="btn btn-default" ui-sref="przedmiot-ksztalcenia-szczegoly({id: przedmiot.id})">{{'global_btn_details' | translate}}</a></td>
+                        <td><a class="btn btn-default" ui-sref="przedmiot-ksztalcenia({id: przedmiot.id})">{{'global_btn_edit' | translate}}</a> </td>
+                        <td><button data-target="#deletePrzedmiotModal" data-toggle="modal" class="btn btn-default"  ng-click="vm.select(przedmiot)">{{'global_btn_delete' | translate}}</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="deletePrzedmiotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ "przedmioty_ksztalcenia_delete_confirm_header" | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                {{ "przedmioty_ksztalcenia_delete_confirm_summary" | translate}} '{{ vm.selected.nazwaPrzedmiotu }}' ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'global_btn_cancel' | translate}}</button>
+                <button ng-click="vm.delete(vm.selected.id)" data-dismiss="modal" type="button"
+                        class="btn btn-primary">
+                    {{'global_btn_delete' | translate}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

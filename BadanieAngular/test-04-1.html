@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 1</title>
+    <link rel="stylesheet" href="shared/bootstrap.min.css" />
+    <script type="text/javascript" src="shared/angular.min.js"></script>
+    <script type="text/javascript" src="test-04-1.js"></script>
+</head>
+<body>
+<div ng-controller="test04Controller as ctrl">
+    <div class="btn btn-default" ng-click="ctrl.start()">Start</div>
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entry in ctrl.entries">
+                <td ng-bind="entry.id"></td>
+                <td ng-bind="entry.first_name"></td>
+                <td ng-bind="entry.last_name"></td>
+                <td ng-bind="entry.gender"></td>
+                <td ng-bind="entry.email"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

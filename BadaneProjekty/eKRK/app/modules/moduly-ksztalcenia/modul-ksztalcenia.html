@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{ "modul_ksztalcenia_header" | translate}}</h1>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{vm.isEditMode() ? "modul_ksztalcenia_edit_modul" : "modul_ksztalcenia_add_modul" | translate}}
+
+    </div>
+    <div class="panel-body">
+        <div class="row">
+
+
+            <form>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>{{ "modul_ksztalcenia_name" | translate }}</label>
+                        <input type="text" class="form-control" ng-model="vm.modul.nazwaModulu">
+                    </div>
+                    <div class="form-group">
+                        <label class="radio control-label">{{ "modul_ksztalcenia_type" | translate }}</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="vm.modul.typ"
+                                   value="Obowiazkowy"> {{ "modul_ksztalcenia_type_mandatory" | translate }}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="vm.modul.typ"
+                                   value="Opcjonalny"> {{ "modul_ksztalcenia_type_optional" | translate }}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Profil</label>
+                        <select class="form-control" ng-model="vm.modul.profil_modulu_id">
+                            <option ng-repeat="profil in vm.profile" value="{{profil.id}}">{{ profil.nazwa }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ "modul_ksztalcenia_min_ects" | translate }}</label>
+                        <input type="number" min="1" max="30" ng-model="vm.modul.minEcts" class="form-control">
+                    </div>
+                </div>
+
+                <!--Przypisane zajecia -->
+                <div class="col-lg-12">
+
+                    <div class="col-lg-5">
+                        <label>{{ "modul_ksztalcenia_subjects" | translate }}</label>
+                        <select size="5" multiple ng-model="vm.selectedZajeciaToAdd"
+                                ng-options="zajecia as zajecia.nazwaZajec for zajecia in vm.zajaciaWithoutModule"
+                                class="form-control assign-tables-wrapper">
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 parent">
+                        <div class="vcenter child">
+                            <button ng-click="vm.addZajeciaToModule()" class="btn btn-block btn-primmary">--></button>
+                            <button ng-click="vm.removeZajeciaFromModule()" class="btn btn-block btn-primmary"><--
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <label>{{ "modul_ksztalcenia_subjects_for_module" | translate }}</label>
+                        <select size="5" multiple ng-model="vm.selectedZajeciaToRemove"
+                                ng-options="zajecia as zajecia.nazwaZajec for zajecia in vm.module_zajecia"
+                                class="form-control assign-tables-wrapper">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="alert alert-success" ng-show="vm.isUpdateAlertVisible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>{{"global_success_alert" | translate}}</strong>
+                    </div>
+
+                    <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' |
+                        translate}}
+                    </button>
+                    <a  href="/moduly-ksztalcenia" class="btn btn-danger">{{'global_btn_cancel' | translate}}</a>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+

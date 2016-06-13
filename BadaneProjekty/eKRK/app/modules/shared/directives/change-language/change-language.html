@@ -1,0 +1,27 @@
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" ng-switch="languageCtrl.getLanguage()">
+        <img src="app/assets/images/pl.png" ng-switch-when="pl"/>
+        <span ng-switch-when="pl">Polski</span>
+        <img src="app/assets/images/us.png" ng-switch-when="en"/>
+        <span ng-switch-when="en">English</span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-languages">
+        <li>
+            <a href="" ng-click="languageCtrl.setLanguage('pl')">
+                <div>
+                    <img src="app/assets/images/pl.png" /> Polski
+                </div>
+            </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="" ng-click="languageCtrl.setLanguage('en')">
+                <div>
+                    <img src="app/assets/images/us.png" /> English
+                </div>
+            </a>
+        </li>
+    </ul>
+    <!-- /.dropdown-alerts -->
+</li>

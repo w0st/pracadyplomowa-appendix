@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{'przedmioty_ksztalcenia_title' | translate}}</h1>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span ng-if="!vm.editmode">{{'przedmioty_ksztalcenia_new_title' | translate}}</span>
+            <span ng-if="vm.editmode">{{'przedmioty_ksztalcenia_edit_title' | translate}}</span>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="col-lg-12 alert alert-danger" ng-show="vm.error">
+            {{vm.error |translate}}
+        </div>
+        <div class="panel-body">
+        <form name="form" ng-show="!vm.error">
+            <div class="form-group">
+                <label>{{'przedmioty_ksztalcenia_name' | translate}}</label>
+                <input type="text" class="form-control" name="subject" ng-model="vm.przedmiot.nazwaPrzedmiotu">
+                <div ng-show="form.$submitted || form.subject.$touched">
+                    <div class="alert-danger alert" role="alert" ng-if="!vm.przedmiot.nazwaPrzedmiotu">
+                        {{'przedmiot_ksztalcenia_please_insert_name' | translate}}
+                    </div>
+                </div>
+                <div class="alert-danger alert" role="alert" ng-if="vm.errorUnique">
+                    {{vm.errorUnique | translate}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>{{'przedmioty_ksztalcenia_attendant' | translate}}</label>
+                <select class="form-control" ng-model="vm.przedmiot.pracownik_naukowy_id" ng-options="pracownik.id as pracownik.email for pracownik in vm.pracownicyNaukowi" required />
+                <div ng-show="form.$submitted || form.subject.$touched">
+                    <div class="alert-danger alert" role="alert" ng-if="!vm.przedmiot.pracownik_naukowy_id">
+                        {{'przedmiot_ksztalcenia_please_select_attendant' | translate}}
+                    </div>
+                </div>
+            </div>
+
+            <button ng-click="vm.save()" class="btn btn-success">{{'global_btn_save' | translate}}</button>
+            <a  ui-sref="przedmioty-ksztalcenia" class="btn btn-danger">{{'global_btn_cancel' | translate}}</a>
+
+        </form>
+            </div>
+    </div>
+    <!-- /.panel -->
+</div>

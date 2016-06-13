@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{ "profile_modulow_header" | translate}}</h1>
+    </div>
+</div>
+
+<!-- Edit from-->
+
+<form id="edit-form">
+    <div class="form-group">
+        <label for="profil-input-save">{{ vm.selectedProfile == null? "profile_modulow_new_profile" : "profile_modulow_edit_profile" | translate }}</label>
+        <input type="text" ng-model="vm.profilToSave.nazwa" class="form-control" id="profil-input-save">
+    </div>
+
+    <!--Success alert -->
+    <div class="alert alert-success" ng-show="vm.isUpdateAlertVisible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>{{"global_success_alert" | translate}}</strong>
+    </div>
+
+    <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}
+    </button>
+    <button ng-click="vm.reset()" class="btn btn-danger">Reset</button>
+
+</form>
+
+<div class="panel">
+    <div class="tab-content">
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable="ng" dt-options="vm.dtOptions" class="row-border hover">
+                    <thead>
+                    <tr>
+                        <th>Profil</th>
+                        <th class="icon-column"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr dt-rows ng-repeat="profil in vm.profile_modulow">
+                        <td>{{ profil.nazwa }}</td>
+                        <td>
+                            <button class="btn btn-default" ng-click="vm.selectEditProfile(profil)">{{'modul_ksztalcenia_edit' | translate}}</button>
+                            <button data-target="#deleteProfilModal" data-toggle="modal" type="button"
+                                    ng-click="vm.selectProfilToDelete(profil)" class="btn btn-danger">x
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!--Profile end -->
+
+
+    <!--Delete profile popup-->
+    <div class="modal fade" id="deleteProfilModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">{{ "profile_modulow_delete_confirm_header" | translate}}</h4>
+                </div>
+                <div class="modal-body">
+                    {{ "profile_modulow_delete_confirm_summary" | translate}} '{{ vm.profilToDelete.nazwa }}' ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button ng-click="vm.deleteSelectedProfile()" data-dismiss="modal" type="button"
+                            class="btn btn-primary">OK
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+</div>

@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{'program_ksztalcenia_header' | translate}}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="alert alert-danger" ng-show="vm.error">
+    {{vm.error}} <a href="" class="alert-link">Alert Link</a>.
+</div>
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Program kształcenia: {{vm.content.id}}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_faculty' | translate}}</label></td>
+                    <td>{{vm.content.kierunek_studiow.wydzial.nazwaWydzialu}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_field_of_study' | translate}}</label></td>
+                    <td>{{vm.content.kierunek_studiow.nazwaKierunku}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_specialisation' | translate}}</label></td>
+                    <td>{{vm.content.specjalnosc}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_degree' | translate}}</label></td>
+                    <td>{{vm.content.poziomKsztalcenia}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_form' | translate}}</label></td>
+                    <td>{{vm.content.forma}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_profile' | translate}}</label></td>
+                    <td>{{vm.content.profil}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_language' | translate}}</label></td>
+                    <td>{{vm.content.jezykStudiow}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_entacted' | translate}}</label></td>
+                    <td>{{vm.content.uchwalony}}</td>
+                </tr>
+                <tr>
+                    <td><label>{{'program_ksztalcenia_applies_from' | translate}}</label></td>
+                    <td>{{vm.content.obowiazujeOd}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{'program_ksztalcenia_connected_areas' | translate}}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{'program_ksztalcenia_area_name' | translate}}</th>
+                        <th>{{'program_ksztalcenia_area_contribution' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Nauki techniczne</td>
+                        <td>100%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{'program_studiow_header' | translate}}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <a class="btn btn-default" ui-sref="program-studiow">{{'global_btn_edit' | translate}}</a>
+                <a class="btn btn-default" ng-href="{{vm.pdfLink}}">{{'global_btn_print' | translate}}</a>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+
+

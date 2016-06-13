@@ -1,0 +1,65 @@
+[{
+    "key": "server",
+    "type": "input",
+    "templateOptions": {
+        "type": "url",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/address/lbl\"|translate"
+    }
+}, {
+    "key": "port",
+    "type": "input",
+    "templateOptions": {
+        "type": "number",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/port/lbl\"|translate"
+    }
+}, {
+    "key": "key",
+    "type": "input",
+    "hideExpression": "model.hideKey === true",
+    "templateOptions": {
+        "type": "text",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/key/lbl\"|translate"
+    }
+}, {
+    "key": "use_auth",
+    "type": "input",
+    "hideExpression": "model.hideUseAuth === true",
+    "templateOptions": {
+        "type": "checkbox",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/authentication/lbl\" | translate"
+    }
+}, {
+    "key": "username",
+    "type": "input",
+    "hideExpression": "model.hideUsername === true || model.use_auth === false",
+    "templateOptions": {
+        "type": "text",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/username/lbl\"|translate"
+    }
+}, {
+    "key": "password",
+    "type": "input",
+    "hideExpression": "model.use_auth === false && model.hideUsername === false",
+    "templateOptions": {
+        "type": "password",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/password/lbl\"|translate"
+    }
+}]

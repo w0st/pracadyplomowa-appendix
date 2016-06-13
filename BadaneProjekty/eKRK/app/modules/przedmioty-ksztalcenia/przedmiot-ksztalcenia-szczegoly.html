@@ -1,0 +1,314 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{'przedmiot_ksztalcenia_title' | translate}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="alert alert-danger" ng-show="vm.error">
+        {{vm.error | translate}}
+    </div>
+    <div class="col-lg-8" ng-show="!vm.error">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'przedmiot_ksztalcenia_title' | translate}}: {{vm.przedmiot.nazwaPrzedmiotu}}
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>{{'przedmioty_ksztalcenia_name' | translate}}</td>
+                        <td>{{vm.przedmiot.nazwaPrzedmiotu}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'przedmioty_ksztalcenia_attendant' | translate}}</td>
+                        <td>{{vm.przedmiot.opiekunPrzedmiotu}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'przedmioty_ksztalcenia_course_code' | translate}}</td>
+                        <td>{{vm.przedmiot.kodyZajec}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <div class="col-lg-4" ng-show="!vm.error">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'przedmiot_ksztalcenia_actions' | translate}}
+            </div>
+            <!-- /.panel-heading -->
+            <div class="table-responsive">
+                <a class="btn btn-default btn-action" ui-sref="przedmiot-ksztalcenia({id: vm.id})">{{'global_btn_edit' | translate}}</a><br/>
+                <button class="btn btn-default btn-action" data-target="#deletePrzedmiotModal" data-toggle="modal" ng-click="vm.selectPrzedmiot(vm.przedmiot)">{{'global_btn_delete' | translate}}</button>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="alert alert-danger" ng-show="vm.error">
+        {{vm.error_kursy | translate}}
+    </div>
+    <div class="col-lg-12" ng-show="!vm.error_kursy">
+        <p><a class="btn btn-default" ui-sref="kurs({'przedmiot-ksztalcenia-id': vm.id})">{{'przedmiot_ksztalcenia_btn_add_course' | translate}}</a></p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'przedmiot_ksztalcenia_kursy' | translate}}
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td ng-repeat="kurs in vm.kursy">{{'formy_kursow_' + kurs.formaKursu.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_nazwaZajec') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.nazwaZajec}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_kodZajec') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.kodZajec}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_godzinyZZU') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.godzinyZZU}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_godzinyCNPS') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.godzinyCNPS}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_sposobZaliczenia') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'sposoby_zaliczenia_' + kurs.sposobZaliczenia.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTS') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTS}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTSP') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTSP}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTSBK') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTSBK}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_czyOgolnouczelniany') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">
+                            <span ng-class="{'fa fa-check': kurs.czyOgolnouczelniany, 'fa fa-times': !kurs.czyOgolnouczelniany}">
+
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_rodzaj') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'rodzaje_kursow_' + kurs.rodzaj.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_typ') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'typy_kursow_' + kurs.typ.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'global_btn_edit' | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">
+                            <a class="btn btn-default" ui-sref="kurs({'przedmiot-ksztalcenia-id': vm.id, 'kurs-id': kurs.id})">{{'global_btn_edit' | translate}}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'global_btn_delete' | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">
+                            <button data-target="#deleteKursModal" data-toggle="modal" class="btn btn-default" ng-click="vm.selectKurs(kurs)">{{'global_btn_delete' | translate}}</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+<div class="row">
+    <div col="col-lg-6" ng-show="!vm.error">
+        <p class="panel-heading">
+            <a class="btn btn-default" ng-if="!vm.grupaKursow" ui-sref="grupakursow({'przedmiot-ksztalcenia-id': vm.id})">{{'przedmiot_ksztalcenia_btn_create_grupa_kursow' | translate}}</a>
+            <a class="btn btn-default" ng-if="vm.grupaKursow" ui-sref="grupakursow({'przedmiot-ksztalcenia-id': vm.id, 'grupa-kursow-id': vm.grupaKursow.id})">{{'przedmiot_ksztalcenia_btn_edit_grupa_kursow' | translate}}</a>
+            <button data-target="#deleteGrupaModal" data-toggle="modal" class="btn btn-default" ng-if="vm.grupaKursow">{{'przedmiot_ksztalcenia_btn_delete_grupa_kursow' | translate}}</button>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+        <div class="col-lg-6" ng-show="!vm.error_grupa">
+            <div class="panel panel-default" ng-if="vm.grupaKursow">
+                <div class="panel-heading">
+                    {{'przedmiot_ksztalcenia_grupa_kursow_title' | translate}}
+                </div>
+                <!-- /.panel-heading -->
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_nazwaZajec') | translate}}</td>
+                            <td>{{vm.grupaKursow.nazwaZajec}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_kodZajec') | translate}}</td>
+                            <td>{{vm.grupaKursow.kodZajec}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_sposobZaliczenia') | translate}}</td>
+                            <td>{{'sposoby_zaliczenia_' + vm.grupaKursow.sposobZaliczenia.toLowerCase() | translate}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTS') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTS}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTSP') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTSP}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTSBK') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTSBK}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_czyOgolnouczelniany') | translate}}</td>
+                            <td>
+                            <span ng-class="{'fa fa-check': vm.grupaKursow.czyOgolnouczelniany, 'fa fa-times': !kurs.czyOgolnouczelniany}">
+
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_rodzaj') | translate}}</td>
+                            <td>{{'rodzaje_kursow_' + vm.grupaKursow.rodzaj.toLowerCase() | translate}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_typ') | translate}}</td>
+                            <td>{{'typy_kursow_' + vm.grupaKursow.typ.toLowerCase() | translate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-lg-6" ng-show="!vm.error_grupa">
+            <div class="panel panel-default" ng-if="vm.grupaKursow">
+                <div class="panel-heading">
+                    {{'przedmiot_ksztalcenia_grupa_kursow_kursy_title' | translate}}
+                </div>
+                <!-- /.panel-heading -->
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>{{'przedmiot_ksztalcenia_label_forma_kursu' | translate}}</td>
+                            <td>{{'przedmiot_ksztalcenia_label_godzinyZZU' | translate}}</td>
+                            <td>{{'przedmiot_ksztalcenia_label_godzinyCNPS' | translate}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="kurs in vm.grupaKursow.kursy">
+                            <td>{{'formy_kursow_' + kurs.formaKursu.toLowerCase() | translate}}</td>
+                            <td>{{kurs.godzinyZZU}}</td>
+                            <td>{{kurs.godzinyCNPS}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel -->
+        </div>
+</div>
+
+<div class="modal fade" id="deletePrzedmiotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ "przedmioty_ksztalcenia_delete_confirm_header" | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                {{ "przedmioty_ksztalcenia_delete_confirm_summary" | translate}} '{{ vm.selectedPrzedmiot.nazwaPrzedmiotu }}' ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'global_btn_cancel' | translate}}</button>
+                <button ng-click="vm.deletePrzedmiot(vm.selectedPrzedmiot.id)" data-dismiss="modal" type="button"
+                        class="btn btn-primary">
+                    {{'global_btn_delete' | translate}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="deleteKursModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ "kurs_delete_confirm_header" | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                {{ "kurs_delete_confirm_summary" | translate}} '{{ vm.selectedKurs.kodZajec }}' ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'global_btn_cancel' | translate}}</button>
+                <button ng-click="vm.deleteKurs(vm.selectedKurs.id)" data-dismiss="modal" type="button"
+                        class="btn btn-primary">
+                    {{'global_btn_delete' | translate}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="deleteGrupaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ "grupa_kursow_delete_confirm_header" | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                {{ 'grupa_kursow_delete_confirm_summary' | translate}} '{{ vm.grupaKursow.nazwaZajec }}' ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'global_btn_cancel' | translate}}</button>
+                <button ng-click="vm.deleteGrupa(vm.grupaKursow.id)" data-dismiss="modal" type="button"
+                        class="btn btn-primary">
+                    {{'global_btn_delete' | translate}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,38 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+            <li ui-sref-active="active">
+                <a ui-sref="home"><i class="fa fa-home"></i> {{'home_dashboard' | translate}}</a>
+            </li>
+            <li ng-class="{active: collapseVar==2}">
+                <a href="" ng-click="check(2)"><i class="fa fa-graduation-cap"></i> {{'program_ksztalcenia_header' | translate}}<span
+                    class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                    <li ng-init="third=!third" ng-class="{active: multiCollapseVar==3}">
+                        <a ui-sref="program-ksztalcenia" href="" ng-click="multiCheck(3)">Program kształcenia 1<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level" collapse="multiCollapseVar!=3">
+                            <li>
+                                <a ui-sref="program-studiow">{{'program_studiow_header' | translate}}</a>
+                            </li>
+                            <li>
+                                <a ui-sref="moduly-ksztalcenia">{{'moduly_ksztalcenia_header' | translate}}</a>
+                            </li>
+                            <li>
+                                <a ui-sref="przedmioty-ksztalcenia">{{'przedmioty_ksztalcenia_title' | translate}}</a>
+                            </li>
+                            <li>
+                                <a ui-sref="macierzsladowania">{{'macierz_sladowania_header' | translate}}</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+
+
+

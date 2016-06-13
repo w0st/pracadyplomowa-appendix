@@ -1,0 +1,174 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Grupa Kursow</h1>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12" ng-show="!vm.error">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'przedmiot_ksztalcenia_title' | translate}}: {{ vm.przedmiot.id }}
+            </div>
+            <!-- Przedmiot Ksztalcenia -->
+            <!-- /.panel-heading -->
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>{{'przedmioty_ksztalcenia_name' | translate}}:</td>
+                        <td>{{ vm.przedmiot.nazwaPrzedmiotu }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{vm.isEditMode() ? "zajecia_kurs_edit_kurs" : "zajecia_kurs_add_kurs" | translate}}
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_kodZajec' | translate}}:</label>
+                                <input type="text" class="form-control" ng-model="vm.grupaKursow.kodZajec">
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmioty_ksztalcenia_name' | translate}}:</label>
+                                <input type="text" class="form-control" ng-model="vm.grupaKursow.nazwaZajec">
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_punktyECTS' | translate}}:</label>
+                                <input type="number" min="0" class="form-control" ng-model="vm.grupaKursow.punktyECTS">
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_punktyECTSP' | translate}}:</label>
+                                <input type="number" min="0" class="form-control" ng-model="vm.grupaKursow.punktyECTSP">
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_punktyECTSBK' | translate}}</label>
+                                <input type="number" min="0" class="form-control" ng-model="vm.grupaKursow.punktyECTSBK">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_sposobZaliczenia' | translate}}:</label>
+                                <select
+                                    data-ng-model="vm.grupaKursow.sposobZaliczenia"
+                                    ng-options="item.value as item.label | translate for item in vm.sposobyZaliczenia"
+                                    class="form-control">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_czyOgolnouczelniany' | translate}}:</label>
+
+                                <div class="checkbox">
+                                    <label><input type="checkbox" ng-model="vm.grupaKursow.czyOgolnouczelniany">{{'przedmiot_ksztalcenia_label_czyOgolnouczelniany' | translate}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_rodzaj' | translate}}:</label>
+                                <select
+                                    data-ng-model="vm.grupaKursow.rodzaj"
+                                    ng-options="item.value as item.label | translate for item in vm.rodzaje"
+                                    class="form-control">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{{'przedmiot_ksztalcenia_label_typ' | translate}}:</label>
+                                <select
+                                    data-ng-model="vm.grupaKursow.typ"
+                                    ng-options="item.value as item.label | translate for item in vm.typy"
+                                    class="form-control">
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-12">
+
+                        <div id="grupa-kursow-kursy-panel" class="panel panel-default">
+                            <div class="panel-heading">
+                                Kursy należące do grupy kursów:
+                            </div>
+                            <!-- Przedmiot Ksztalcenia -->
+                            <!-- /.panel-heading -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Forma Kursu</th>
+                                        <th>Godziny ZZU</th>
+                                        <th>Godziny CNPS</th>
+                                        <th>Kurs końcowy</th>
+                                        <th>Usuń</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="kurs in vm.grupaKursow.kursy">
+                                        <td>
+                                            <select
+                                            data-ng-model="kurs.formaKursu"
+                                            ng-options="item.value as item.label | translate for item in vm.formyKursow"
+                                            class="form-control">
+                                        </select></td>
+                                        <td>
+                                            <input type="number" min="0" class="form-control" ng-model="kurs.godzinyZZU">
+                                        </td>
+                                        <td>
+                                            <input type="number" min="0" class="form-control" ng-model="kurs.godzinyCNPS">
+                                        </td>
+                                        <td>
+                                            <input type="radio" class="width-100" ng-model="vm.grupaKursow.kurs_koncowy.id" ng-value="kurs.id">
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary width-100" ng-click="vm.deleteKurs($index)">Usuń</button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+
+                        <button id="grupa-kursow-add-kurs-button" ng-click="vm.addKursToGrupaKursow()"  class="btn btn-primary">Dodaj kolejny kurs</button>
+
+
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-repeat="(key, value) in vm.validations" ng-show="!value">
+                    {{key | translate}}
+                </div>
+
+                <!--Success alert -->
+                <div class="alert alert-success" ng-show="vm.isUpdateAlertVisible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <strong>{{"global_success_alert" | translate}}</strong>
+                </div>
+
+
+                <button ng-click="vm.save()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' |
+                    translate}}
+                </button>
+                <a  href="/przedmiot-ksztalcenia-szczegoly/{{vm.przedmiotKsztalceniaId}}" class="btn btn-danger">{{'global_btn_cancel' | translate}}</a>          </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+

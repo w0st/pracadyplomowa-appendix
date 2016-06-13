@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{'macierz_sladowania_header' | translate}}</h1>
+    </div>
+</div>
+
+<script>
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+</script>
+
+
+<table class="table" ng-model="efektyKierunkoweTable">
+    <thead>
+    <tr>
+        <th>Nr</th>
+        <th>{{'macierz_sladowania_directional_effect' | translate}}</th>
+        <th>{{'macierz_sladowania_description' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in listKierunkoweEfekty track by item.kod">
+        <td >{{$index+1}}</td>
+        <td data-drop="false" ng-model='listKierunkoweEfekty'
+            data-jqyoui-options="{helper: 'clone'}" jqyoui-droppable="{index: {{$index}}}">
+            <div uib-tooltip="{{item.opis}}" tooltip-placement="right" class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="listKierunkoweEfekty"
+                 jqyoui-draggable="{index: {{$index}},placeholder: 'keep', animate:true}" ng-hide="!item.kod">{{item.kod}}</div>
+        </td>
+
+        <td>{{item.opis}}</td>
+    </tr>
+</tbody>
+</table>
+
+
+<table class="table" ng-model="macierzTable">
+    <thead>
+    <tr>
+        <th>Nr</th>
+        <th>{{'macierz_sladowania_area_effect' | translate}}</th>
+        <th>{{'macierz_sladowania_directional_effects' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in obszaroweEfekty">
+        <td >{{$index+1}}</td>
+        <td class="text-info" data-toggle="tooltip" data-placement="right" title={{item.opis}}>{{item.kod}}</td>
+        <td class="thumbnail" data-drop="true" ng-model='item.kierunkowe_efekty_ksztalcenia'  jqyoui-droppable="{multiple:true, placeholder: 'keep'}" data-jqyoui-options="canDrop(item)">
+            <div class="caption">
+                <div uib-tooltip="{{efekt.opis}}" tooltip-placement="right" class="btn btn-info btn-draggable" ng-repeat="efekt in item.kierunkowe_efekty_ksztalcenia track by efekt.kod" ng-show="efekt.kod" data-drag="{{efekt.drag}}" data-jqyoui-options="{revert: 'invalid'}"
+                     ng-model="item.kierunkowe_efekty_ksztalcenia" jqyoui-draggable="{index: {{$index}},animate:true}">{{efekt.kod}}
+                    <button type="button" ng-click="selectEfekt(efekt, item)" class="close" data-target="#deleteEfektModal" data-toggle="modal">&nbsp&nbsp×</button>
+                </div>
+            </div>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<button ng-click="save()" class="btn btn-success">{{'macierz_sladowania_btn_save' | translate}}</button>
+<button ng-click="cancel()" class="btn btn-danger">{{'macierz_sladowania_btn_cancel' | translate}}</button>
+
+<!--modals-->
+<div class="modal fade" id="deleteEfektModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Potwierdź usunięcie efektu kształcenia</h4>
+            </div>
+            <div class="modal-body">
+                Efekt kształcenia zostanie usunięty, czy kontynuować?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button ng-click="deleteEfekt()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+

@@ -1,0 +1,96 @@
+<div ng-controller="TraktTVCtrl" class="trakt-import" style="margin-top:15px">
+  <!-- Login Box -->
+  <div>
+    <div class="trakt-logo" style="float:left"><img src="img/trakt.png"></div>
+    <div class="trakt-login">
+      <p translate-once="SETTINGS/TRAKT-IMPORT/sync/desc"></p>
+      <p><strong  translate-once="COMMON/current-setting/hdr"></strong>
+       {{traktSync ? 'COMMON/enabled/lbl' : 'COMMON/disabled/lbl'|translate}}</p>
+      <form name="userCredentials">
+        <table>
+          <tr class="username">
+            <td translate-once="SETTINGS/TRAKT-IMPORT/username/hdr"></td>
+            <td>
+              <input type='text' style='background-color: rgba(0,0,0,0.8);' name='username' ng-model='credentials.username' placeholder="Trakt.TV {{'COMMON/username/lbl'|translate}}" ng-disabled="credentials.success" ng-keyup="$event.keyCode == 13 && onAuthorizeEnter()" />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <a ng-href="{{getPinUrl()}}" ng-click="getPin()" ng-disabled="credentials.username == ''" ng-hide="credentials.success" class="btn btn-success" target='_blank' translate-once="SETTINGS/TRAKT-IMPORT/authorize/btn"></a>
+            </td>
+          </tr>
+          <tr class="password">
+            <td translate-once="SETTINGS/TRAKT-IMPORT/password/hdr"></td>
+            <td>
+              <input type='password' style='background-color: rgba(0,0,0,0.8);' name='password' ng-model='credentials.pincode' placeholder="Trakt.TV PIN" ng-disabled="credentials.success || !credentials.getpin" ng-keyup="$event.keyCode == 13 && onLoginEnter()" />
+            </td>
+          </tr>
+          <tr class="button">
+            <td></td>
+            <td><center>
+              <a ng-click="authorize(credentials.pincode)" class="btn btn-success" style="position:relative" ng-disabled="credentials.success || !credentials.getpin" ng-show="!credentials.success">
+                <i class="glyphicon glyphicon-log-in" style="float:left;top:3px"></i><span translate-once="SETTINGS/TRAKT-IMPORT/login-to/btn"></span><span>Trakt.TV</span>
+                <loading-spinner ng-show="credentials.authorizing" style="width:20px;height:20px;position:absolute;right:5px"></loading-spinner>
+              </a>
+              
+              <a ng-click="clearCredentials()" ng-if="credentials.success" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash" style="float:left;top:3px"></i><span translate-once="SETTINGS/TRAKT-IMPORT/clear-credentials/btn"></span>
+              </a></center>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <p class="alert alert-success" role="alert" ng-show="credentials.success" style="margin-top:5px;white-space:normal;word-break:break-all;">
+        <strong>TraktTV <span translate-once="SETTINGS/TRAKT-IMPORT/authorized/alert"></span></strong> 
+        Token: {{credentials.success}}
+      </p>
+      <p class="alert alert-danger" role="alert" ng-show="credentials.error != false" style="margin-top:5px;white-space:normal">{{credentials.error}}</p>
+    </div>
+  </div>
+
+  <div ng-show="credentials.success" class="buttons">
+    <div class="toggleWatchSync">
+      <hr class="setting-divider">
+      <h2>
+        <span uib-tooltip="{{traktSync ? 'COMMON/enabled/lbl' : 'COMMON/disabled/lbl'|translate}}">
+          <i class="glyphicon glyphicon-{{traktSync ? 'ok alert-success' : 'remove alert-danger'}}" style="font-size:22px;background-color:transparent"></i>
+        </span>
+        <li translate-once="SETTINGS/TRAKT-IMPORT/watched-sync/hdr"></li>
+      </h2>
+      <p translate-once="SETTINGS/TRAKT-IMPORT/watched-sync/desc"></p>
+      <p><strong  translate-once="COMMON/current-setting/hdr"></strong>
+       {{traktSync ? 'COMMON/enabled/lbl' : 'COMMON/disabled/lbl'|translate}}</p>
+      <a ng-click="toggleTraktSync()" class="btn btn-{{traktSync ? 'danger' : 'success'}}">
+        <i class="glyphicon glyphicon-{{traktSync ? 'remove-circle' : 'export'}}" style="float:left;top:3px"></i>{{traktSync ? 'SETTINGS/TRAKT-IMPORT/sync-disabled/btn' : 'SETTINGS/TRAKT-IMPORT/sync-enabled/btn'|translate}}
+      </a>
+    </div>
+
+    <hr class="setting-divider">
+
+    <h2 translate-once="SETTINGS/TRAKT-IMPORT/hdr"></h2>
+    <p translate-once="SETTINGS/TRAKT-IMPORT/desc"></p>
+    
+    <a ng-click="readTraktTV()" class="btn btn-info">
+      <i class="glyphicon glyphicon-import" style="float:left;top:3px"></i> <span translate-once="SETTINGS/TRAKT-IMPORT/sync-import/btn"></span>
+    </a>
+
+    <div class="pushToTrakt">
+      <hr class="setting-divider">
+
+      <h2 translate-once="SETTINGS/TRAKT-IMPORT/push/hdr"></h2>
+      <p translate-once="SETTINGS/TRAKT-IMPORT/push/desc"></p>
+      
+      <a ng-click="pushToTraktTV()" class="btn btn-info">
+        <i class="glyphicon glyphicon-export" style="float:left;top:3px"></i> <span translate-once="SETTINGS/TRAKT-IMPORT/push/btn"></span>
+      </a>
+    </div>
+  </div>
+  <div class="miniposter x2" ng-if="traktTVSeries[0]" style="text-align:center">
+    <serieheader style='display:inline-block; margin:5px;' data="serie" no-overview="1" no-title="1" mode="poster" ng-repeat="serie in traktTVSeries">
+      <em class="earmark" ng-show="isAdded(serie.tvdb_id)"><i class='glyphicon glyphicon-ok'></i></em>
+      <em class="earmark adding" ng-show="isAdding(serie.tvdb_id)"><loading-spinner></loading-spinner></em>
+    </serieheader>
+    <small style="display:block"<span translate-once="SETTINGS/TRAKT-IMPORT/watched-episodes/lbl"></span> {{ countWatchedEpisodes(serie) }} </small>
+  </div>
+</div>

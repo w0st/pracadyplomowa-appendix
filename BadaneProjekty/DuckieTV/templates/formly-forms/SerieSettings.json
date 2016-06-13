@@ -1,0 +1,117 @@
+[{
+     "className": "row",
+     "fieldGroup": [{
+        "key": "ignoreHideSpecials",
+        "className": "inline-checkbox-small col-xs-6",
+        "type": "input",
+        "templateOptions": {
+            "type": "checkbox",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"SERIESETTINGSCTRLjs/ignore-hide-specials/lbl\" | translate"
+        }
+    }]
+}, {
+    "key": "customSearchString",
+    "className": "col-xs-12",
+    "type": "input",
+    "templateOptions": {
+        "type": "text",
+        "label": ""
+    },
+    "expressionProperties": {
+        "templateOptions.label": "\"COMMON/custom-search-string/lbl\" | translate",
+        "templateOptions.placeholder": "\"SERIESETTINGSCTRLjs/custom-search/placeholder\" | translate"
+    }
+}, {
+    "className": "row",
+    "fieldGroup": [{
+        "key": "autoDownload",
+        "className": "inline-checkbox-small col-xs-6",
+        "type": "input",
+        "templateOptions": {
+            "type": "checkbox",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"SERIESETTINGSCTRLjs/auto-download/lbl\" | translate"
+        }
+    }, {
+        "key": "ignoreGlobalQuality",
+        "className": "inline-checkbox-small col-xs-6",
+        "type": "input",
+        "templateOptions": {
+            "type": "checkbox",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"COMMON/ignore-global-quality/lbl\" | translate"
+        }
+    }]
+}, {
+    "className": "row",
+    "fieldGroup": [{
+        "key": "ignoreGlobalIncludes",
+        "className": "inline-checkbox-small col-xs-6",
+        "type": "input",
+        "templateOptions": {
+            "type": "checkbox",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"COMMON/ignore-global-includes/lbl\" | translate"
+        }
+    }, {
+        "key": "ignoreGlobalExcludes",
+        "className": "inline-checkbox-small col-xs-6",
+        "type": "input",
+        "templateOptions": {
+            "type": "checkbox",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"COMMON/ignore-global-excludes/lbl\" | translate"
+        }
+    }]
+}, {
+    "className": "row",
+    "fieldGroup": [{
+        "key": "searchProvider",
+        "className": "cseProperty col-xs-3",
+        "type": "select",
+        "templateOptions": {
+            "label": "",
+            "options": "$mappings.options.searchProviders",
+            "nameProp": "name",
+            "valueProp": "value"
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"SERIESETTINGSCTRLjs/search-provider/lbl\" | translate"
+        }
+    }, {
+        "key": "customSearchSizeMin",
+         "className": "col-xs-3",
+         "type": "input",
+         "templateOptions": {
+            "type": "number",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"COMMON/custom-search-size-min/lbl\" | translate",
+            "templateOptions.placeholder": "\"COMMON/search-size/placeholder\" | translate"
+        }
+    }, {
+        "key": "customSearchSizeMax",
+        "className": "col-xs-3",
+        "type": "input",
+        "templateOptions": {
+            "type": "number",
+            "label": ""
+        },
+        "expressionProperties": {
+            "templateOptions.label": "\"COMMON/custom-search-size-max/lbl\" | translate",
+            "templateOptions.placeholder": "\"COMMON/search-size/placeholder\" | translate"
+        }
+    }]
+}]
